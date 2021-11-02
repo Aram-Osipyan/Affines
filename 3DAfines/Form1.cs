@@ -119,18 +119,50 @@ namespace _3DAfines
         }
         private void DXRotate_Scroll(object sender, ScrollEventArgs e)
         {
-            _polyhedron.Rotate(e.NewValue - e.OldValue, 0, 0);
+            if (_scale_mode)
+            {
+                _polyhedron.Rotate(e.NewValue - e.OldValue, 0, 0);
+            }
+            else
+            {
+                Point dPoint = _polyhedron.Center;
+                _polyhedron.Translate(-dPoint.X, -dPoint.Y, -dPoint.Z);
+                _polyhedron.Rotate(e.NewValue - e.OldValue, 0, 0);
+                _polyhedron.Translate(dPoint.X, dPoint.Y, dPoint.Z);
+            }
             UpdateScene();
         }
 
         private void DYRotate_Scroll(object sender, ScrollEventArgs e)
         {
-            _polyhedron.Rotate(0,e.NewValue - e.OldValue, 0);
+            if (_scale_mode)
+            {
+                _polyhedron.Rotate(0, e.NewValue - e.OldValue, 0);
+            }
+            else
+            {
+                Point dPoint = _polyhedron.Center;
+                _polyhedron.Translate(-dPoint.X, -dPoint.Y, -dPoint.Z);
+                _polyhedron.Rotate(0, e.NewValue - e.OldValue, 0);
+                _polyhedron.Translate(dPoint.X, dPoint.Y, dPoint.Z);
+            }
+            
             UpdateScene();
         }
         private void DZRotate_Scroll(object sender, ScrollEventArgs e)
         {
-            _polyhedron.Rotate(0,0,e.NewValue - e.OldValue);
+            if (_scale_mode)
+            {
+                _polyhedron.Rotate(0, 0, e.NewValue - e.OldValue);
+            }
+            else
+            {
+                Point dPoint = _polyhedron.Center;
+                _polyhedron.Translate(-dPoint.X, -dPoint.Y, -dPoint.Z);
+                _polyhedron.Rotate(0, 0, e.NewValue - e.OldValue);
+                _polyhedron.Translate(dPoint.X, dPoint.Y, dPoint.Z);
+            }
+            
             UpdateScene();
         }
 
@@ -227,6 +259,37 @@ namespace _3DAfines
         {
             _polyhedron.LineRotate(LineVector.Normalize(), e.NewValue - e.OldValue);
             UpdateScene();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            _polyhedron.ReflectionYZ();
+            UpdateScene();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            _polyhedron.ReflectionZX();
+            UpdateScene();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            _polyhedron.ReflectionXY();
+            UpdateScene();
+        }
+        private bool _rotate_mode = false;
+        private void label5_Click(object sender, EventArgs e)
+        {
+            _scale_mode = !_scale_mode;
+            if (_scale_mode)
+            {
+                (sender as Label).Text = "Rotate";
+            }
+            else
+            {
+                (sender as Label).Text = "Center Rotate";
+            }
         }
     }
 }

@@ -68,8 +68,13 @@ namespace _3DAfines
             this.point1X = new System.Windows.Forms.TextBox();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.label13 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -161,33 +166,28 @@ namespace _3DAfines
             this.label5.Size = new System.Drawing.Size(50, 17);
             this.label5.TabIndex = 20;
             this.label5.Text = "Rotate";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(606, 162);
+            this.label6.Location = new System.Drawing.Point(0, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 17);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "dz";
+            this.label6.Size = new System.Drawing.Size(100, 23);
+            this.label6.TabIndex = 82;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(573, 162);
+            this.label7.Location = new System.Drawing.Point(0, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 17);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "dy";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 83;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(540, 162);
+            this.label8.Location = new System.Drawing.Point(0, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 17);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "dx";
+            this.label8.Size = new System.Drawing.Size(100, 23);
+            this.label8.TabIndex = 84;
             // 
             // vScrollBar4
             // 
@@ -426,11 +426,59 @@ namespace _3DAfines
             this.label13.TabIndex = 80;
             this.label13.Text = "Angle";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Location = new System.Drawing.Point(607, 199);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(204, 188);
+            this.groupBox1.TabIndex = 81;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Отражение";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(47, 117);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(120, 28);
+            this.button8.TabIndex = 35;
+            this.button8.Text = "ReflectionXY";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(47, 46);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(120, 28);
+            this.button6.TabIndex = 33;
+            this.button6.Text = "ReflectionYZ";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(47, 81);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(120, 28);
+            this.button7.TabIndex = 34;
+            this.button7.Text = "ReflectionZX";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1379, 748);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.hScrollBar1);
             this.Controls.Add(this.label20);
@@ -474,6 +522,7 @@ namespace _3DAfines
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,6 +569,10 @@ namespace _3DAfines
         private System.Windows.Forms.TextBox point1X;
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 

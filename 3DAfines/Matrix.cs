@@ -174,5 +174,40 @@ namespace _3DAfines
                     { 0, 0, 0, 1 }
                 };
         }
+
+        public static Matrix ReflectYZ()
+        {
+            Matrix affinMatr = new float[,]
+            {
+                {-1, 0, 0, 0 },
+                {0, 1, 0, 0 },
+                {0, 0, 1, 0 },
+                {0, 0, 0, 1 },
+            };
+            return affinMatr;
+        }
+        public static Matrix ReflectZX()
+        {
+            Matrix affinMatr = new float[,]
+            {
+                {1, 0, 0, 0 },
+                {0, -1, 0, 0 },
+                {0, 0, 1, 0 },
+                {0, 0, 0, 1 },
+            };
+            return affinMatr;
+        }
+
+        public static Matrix ReflectXY()
+        {
+            Matrix affinMatr = new float[,]
+            {
+                {1, 0, 0, 0 },
+                {0, 1, 0, 0 },
+                {0, 0, -1, 0 },
+                {0, 0, 0,  1},
+            };
+            return affinMatr;
+        }
     }
 }

@@ -76,6 +76,33 @@ namespace _3DAfines
             Y = res[0, 1];
             Z = res[0, 2];
         }
+        public void ReflectionYZ()
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a * Matrix.ReflectYZ();
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+
+        }
+
+        public void ReflectionZX()
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a * Matrix.ReflectZX();
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+        }
+
+        public void ReflectionXY()
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a * Matrix.ReflectXY();
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+        }
         public static Point iso3Dto2D(Point p, int width = 100, int height = 100, float phi = 145, float xi = 45)
         {
 

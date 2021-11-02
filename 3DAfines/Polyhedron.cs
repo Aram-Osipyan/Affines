@@ -87,6 +87,31 @@ namespace _3DAfines
             }
             _center.LineRotate(vec,angle);
         }
+
+        public void ReflectionYZ()
+        {
+            foreach (var item in _points)
+            {
+                item.ReflectionYZ();
+            }
+        }
+
+        public void ReflectionZX()
+        {
+            foreach (var item in _points)
+            {
+                item.ReflectionZX();
+            }
+        }
+
+        public void ReflectionXY()
+        {
+            foreach (var item in _points)
+            {
+                item.ReflectionXY();
+            }
+        }
+
         public static Polyhedron Hexahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
