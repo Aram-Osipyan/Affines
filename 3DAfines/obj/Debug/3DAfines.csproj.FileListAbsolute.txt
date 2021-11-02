@@ -1,0 +1,10 @@
+C:\Users\osipy\source\repos\3DAfines\3DAfines\bin\Debug\3DAfines.exe.config
+C:\Users\osipy\source\repos\3DAfines\3DAfines\bin\Debug\3DAfines.exe
+C:\Users\osipy\source\repos\3DAfines\3DAfines\bin\Debug\3DAfines.pdb
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\3DAfines.csproj.AssemblyReference.cache
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\_3DAfines.Form1.resources
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\_3DAfines.Properties.Resources.resources
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\3DAfines.csproj.GenerateResource.cache
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\3DAfines.csproj.CoreCompileInputs.cache
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\3DAfines.exe
+C:\Users\osipy\source\repos\3DAfines\3DAfines\obj\Debug\3DAfines.pdb

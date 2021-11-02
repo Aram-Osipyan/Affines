@@ -8,6 +8,14 @@ namespace _3DAfines
     {
         private List<Point> _points;
         private List<Edge> _edges;
+        private Point _center;
+        public Point Center
+        {
+            get
+            {
+                return _center;
+            }
+        }
         public List<Edge> Edges
         {
             get
@@ -45,6 +53,7 @@ namespace _3DAfines
             {
                 item.Translate(dx, dy, dz);
             }
+            _center.Translate(dx, dy, dz);
         }
         public void Rotate(float ax, float ay, float az)
         {
@@ -52,6 +61,7 @@ namespace _3DAfines
             {
                 item.Rotate(ax, ay, az);
             }
+            _center.Rotate(ax, ay, az);
         }
         public void Scale(float ax, float ay, float az)
         {
@@ -59,10 +69,28 @@ namespace _3DAfines
             {
                 item.Scale(ax, ay, az);
             }
+            _center.Scale(ax, ay, az);
+        }
+        public void CenterScale(float ax, float ay, float az)
+        {
+            Point center = Center.Copy();
+            Translate(-Center.X, -Center.Y, -Center.Z);
+            Scale(ax, ay, az);
+            Translate(Center.X +center.X, Center.Y + center.Y, Center.Z + center.Z);
+
+        }
+        public void LineRotate(Point vec, float angle)
+        {
+            foreach (var item in _points)
+            {
+                item.LineRotate(vec,angle);
+            }
+            _center.LineRotate(vec,angle);
         }
         public static Polyhedron Hexahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(size / 2, size / 2, size / 2);
             ans._points.Add(new Point(0, 0, 0));
             ans._points.Add(new Point(0, size, 0));
             ans._points.Add(new Point(size, size, 0));
@@ -110,6 +138,7 @@ namespace _3DAfines
         public static Polyhedron Octahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(size / 2, size / 2, size / 2);
             ans._points.Add(new Point(size / 2, size / 2, 0));
             ans._points.Add(new Point(0, size / 2, size / 2));
             ans._points.Add(new Point(size / 2, 0, size / 2));
@@ -138,6 +167,7 @@ namespace _3DAfines
         public static Polyhedron Icosahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(0, 0, 0);
             float height = size * 0.5f;
             float degree = 0;
             for (int i = 0; i < 10; i++)
@@ -193,6 +223,7 @@ namespace _3DAfines
         public static Polyhedron Dodecahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(0, 0, 0);
             List<Point> points_icosa = new List<Point>();
             double height = size * 0.5;
             double degree = 0;

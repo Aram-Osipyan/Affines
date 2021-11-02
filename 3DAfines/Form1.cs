@@ -16,6 +16,59 @@ namespace _3DAfines
         Graphics _graphics2;
         Polyhedron _polyhedron;
         Polyhedron _axes;
+
+        private double point1_x
+        {
+            get
+            {
+                return (point1X.Text == "" ? 0 : int.Parse(point1X.Text));
+            }
+        }
+        private double point1_y
+        {
+            get
+            {
+                return (point1Y.Text == "" ? 0 : int.Parse(point1Y.Text));
+            }
+        }
+        private double point1_z
+        {
+            get
+            {
+                return (point1Z.Text == "" ? 0 : int.Parse(point1Z.Text));
+            }
+        }
+        private double point2_x
+        {
+            get
+            {
+                return (point2X.Text == "" ? 0 : int.Parse(point2X.Text));
+            }
+        }
+        private double point2_y
+        {
+            get
+            {
+                return (point2Y.Text == "" ? 0 : int.Parse(point2Y.Text));
+            }
+        }
+        private double point2_z
+        {
+            get
+            {
+                return (point2Z.Text == "" ? 0 : int.Parse(point2Z.Text));
+            }
+        }
+        private Point LineVector
+        {
+            get
+            {
+                return new Point(
+                    point2_x - point1_x,
+                    point2_y - point1_y,
+                    point2_z - point1_z);
+            }
+        }
         public Form1()
         {
             InitializeComponent();
@@ -83,18 +136,41 @@ namespace _3DAfines
 
         private void DXScale_Scroll(object sender, ScrollEventArgs e)
         {
-            _polyhedron.Scale((float)(e.NewValue - e.OldValue) /100 +1, 1, 1);
+            if (_scale_mode)
+            {
+                _polyhedron.Scale((float)(e.NewValue - e.OldValue) / 100 + 1, 1, 1);
+            }
+            else
+            {
+                _polyhedron.CenterScale((float)(e.NewValue - e.OldValue) / 100 + 1, 1, 1);
+            }
             UpdateScene();
         }
 
         private void DYScale_Scroll(object sender, ScrollEventArgs e)
         {
-            _polyhedron.Scale(1, (float)(e.NewValue - e.OldValue) /100 +1 , 1);
+            if (_scale_mode)
+            {
+                _polyhedron.Scale(1, (float)(e.NewValue - e.OldValue) / 100 + 1, 1);
+            }
+            else
+            {
+                _polyhedron.CenterScale(1, (float)(e.NewValue - e.OldValue) / 100 + 1, 1);
+            }
+            
             UpdateScene();
         }
         private void DZScale_Scroll(object sender, ScrollEventArgs e)
         {
-            _polyhedron.Scale(1, 1, (float)(e.NewValue - e.OldValue) /100 + 1);
+            if (_scale_mode)
+            {
+                _polyhedron.Scale(1, 1, (float)(e.NewValue - e.OldValue) / 100 + 1);
+            }
+            else
+            {
+                _polyhedron.CenterScale(1, 1, (float)(e.NewValue - e.OldValue) / 100 + 1);
+            }
+            
             UpdateScene();
         }
 
@@ -130,6 +206,26 @@ namespace _3DAfines
         private void button5_Click(object sender, EventArgs e)
         {
             _polyhedron = Polyhedron.Dodecahedron(60);
+            UpdateScene();
+        }
+
+        private bool _scale_mode = false;
+        private void label9_Click(object sender, EventArgs e)
+        {
+            _scale_mode = !_scale_mode;
+            if (_scale_mode)
+            {
+                (sender as Label).Text = "Scale";
+            }
+            else
+            {
+                (sender as Label).Text = "Center Scale";
+            }
+        }
+
+        private void LineRotate(object sender, ScrollEventArgs e)
+        {
+            _polyhedron.LineRotate(LineVector.Normalize(), e.NewValue - e.OldValue);
             UpdateScene();
         }
     }

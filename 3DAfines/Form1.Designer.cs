@@ -57,6 +57,17 @@ namespace _3DAfines
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.point2Z = new System.Windows.Forms.TextBox();
+            this.point2Y = new System.Windows.Forms.TextBox();
+            this.point2X = new System.Windows.Forms.TextBox();
+            this.point1Z = new System.Windows.Forms.TextBox();
+            this.point1Y = new System.Windows.Forms.TextBox();
+            this.point1X = new System.Windows.Forms.TextBox();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -213,6 +224,7 @@ namespace _3DAfines
             this.label9.Size = new System.Drawing.Size(43, 17);
             this.label9.TabIndex = 27;
             this.label9.Text = "Scale";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -318,11 +330,118 @@ namespace _3DAfines
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.Location = new System.Drawing.Point(479, 275);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(16, 17);
+            this.label20.TabIndex = 78;
+            this.label20.Text = "Z";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.Location = new System.Drawing.Point(479, 247);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(18, 17);
+            this.label19.TabIndex = 77;
+            this.label19.Text = "Y";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(479, 217);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(18, 17);
+            this.label18.TabIndex = 76;
+            this.label18.Text = "X";
+            // 
+            // point2Z
+            // 
+            this.point2Z.Location = new System.Drawing.Point(503, 275);
+            this.point2Z.Name = "point2Z";
+            this.point2Z.Size = new System.Drawing.Size(57, 22);
+            this.point2Z.TabIndex = 75;
+            this.point2Z.Text = "0";
+            // 
+            // point2Y
+            // 
+            this.point2Y.Location = new System.Drawing.Point(503, 247);
+            this.point2Y.Name = "point2Y";
+            this.point2Y.Size = new System.Drawing.Size(57, 22);
+            this.point2Y.TabIndex = 74;
+            this.point2Y.Text = "0";
+            // 
+            // point2X
+            // 
+            this.point2X.Location = new System.Drawing.Point(503, 217);
+            this.point2X.Name = "point2X";
+            this.point2X.Size = new System.Drawing.Size(57, 22);
+            this.point2X.TabIndex = 73;
+            this.point2X.Text = "0";
+            // 
+            // point1Z
+            // 
+            this.point1Z.Location = new System.Drawing.Point(416, 275);
+            this.point1Z.Name = "point1Z";
+            this.point1Z.Size = new System.Drawing.Size(57, 22);
+            this.point1Z.TabIndex = 72;
+            this.point1Z.Text = "0";
+            // 
+            // point1Y
+            // 
+            this.point1Y.Location = new System.Drawing.Point(416, 245);
+            this.point1Y.Name = "point1Y";
+            this.point1Y.Size = new System.Drawing.Size(57, 22);
+            this.point1Y.TabIndex = 71;
+            this.point1Y.Text = "0";
+            // 
+            // point1X
+            // 
+            this.point1X.Location = new System.Drawing.Point(416, 217);
+            this.point1X.Name = "point1X";
+            this.point1X.Size = new System.Drawing.Size(57, 22);
+            this.point1X.TabIndex = 70;
+            this.point1X.Text = "0";
+            // 
+            // hScrollBar1
+            // 
+            this.hScrollBar1.Location = new System.Drawing.Point(416, 313);
+            this.hScrollBar1.Maximum = 360;
+            this.hScrollBar1.Name = "hScrollBar1";
+            this.hScrollBar1.Size = new System.Drawing.Size(144, 21);
+            this.hScrollBar1.TabIndex = 79;
+            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.LineRotate);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(436, 344);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 17);
+            this.label13.TabIndex = 80;
+            this.label13.Text = "Angle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1379, 748);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.hScrollBar1);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.point2Z);
+            this.Controls.Add(this.point2Y);
+            this.Controls.Add(this.point2X);
+            this.Controls.Add(this.point1Z);
+            this.Controls.Add(this.point1Y);
+            this.Controls.Add(this.point1X);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -390,6 +509,17 @@ namespace _3DAfines
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox point2Z;
+        private System.Windows.Forms.TextBox point2Y;
+        private System.Windows.Forms.TextBox point2X;
+        private System.Windows.Forms.TextBox point1Z;
+        private System.Windows.Forms.TextBox point1Y;
+        private System.Windows.Forms.TextBox point1X;
+        private System.Windows.Forms.HScrollBar hScrollBar1;
+        private System.Windows.Forms.Label label13;
     }
 }
 

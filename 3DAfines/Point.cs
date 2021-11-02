@@ -29,6 +29,11 @@ namespace _3DAfines
             Y = 0;
             Z = 0;
         }
+        public Point Normalize()
+        {
+            float distance = (float)Math.Sqrt(X * X + Y * Y+Z*Z);
+            return new Point(X / distance, Y / distance,Z/distance);
+        }
         public Matrix GetMatrix()
         {
             return new float[,] { { X, Y,Z, 1 } };
@@ -62,7 +67,15 @@ namespace _3DAfines
             Y = res[0, 1];
             Z = res[0, 2];
         }
-
+        public void LineRotate(Point vec,float angle)
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a *
+                Matrix.LineRotate(vec, angle);
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+        }
         public static Point iso3Dto2D(Point p, int width = 100, int height = 100, float phi = 145, float xi = 45)
         {
 
@@ -84,6 +97,10 @@ namespace _3DAfines
             Matrix point = new float[,] { { p.X }, { p.Y }, { p.Z }, { 1 } };
             Matrix c = iso_matr*point;
             return new Point(width / 2 + (int)c[0, 0], height / 2 + (int)c[1, 0],0);
+        }
+        public Point Copy()
+        {
+            return new Point(X, Y, Z);
         }
     }
     class Edge
