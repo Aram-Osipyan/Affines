@@ -142,14 +142,30 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[6], ans._points[2]));
             return ans;
         }
+        public static Point CenterofGravity(List<Point> l)
+        {
+            Point p = new Point();
+            foreach (Point p1 in l)
+            {
+                p.X += p1.X;
+                p.Y += p1.Y;
+                p.Z += p1.Z;
+            }
+            p.X /= l.Count;
+            p.Y /= l.Count;
+            p.Z /= l.Count;
+            return p;
+
+        }
         public static Polyhedron Tetrahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            
             ans._points.Add(new Point(0, 0, 0));
-            ans._points.Add(new Point(size, 0, 0));
-            ans._points.Add(new Point(size/2, size*(float)Math.Sqrt(3) / 2, 0));
-            ans._points.Add(new Point(size/2, size * (float)Math.Sqrt(3) / 6, size * (float)Math.Sqrt(1.0/3)));
-
+            ans._points.Add(new Point(size, size, 0));
+            ans._points.Add(new Point(0, size, size));
+            ans._points.Add(new Point(size, 0, size )); 
+            ans._center = CenterofGravity(ans._points);
             ans._edges.Add(new Edge(ans._points[0], ans._points[1]));
             ans._edges.Add(new Edge(ans._points[0], ans._points[2]));
             ans._edges.Add(new Edge(ans._points[0], ans._points[3]));
