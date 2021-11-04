@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace _3DAfines
+namespace RotatingForm
 {
     class Polyhedron
     {
         private List<Point> _points;
         private List<Edge> _edges;
+        private Point _center;
+        public Point Center
+        {
+            get
+            {
+                return _center;
+            }
+        }
         public List<Edge> Edges
         {
             get
@@ -45,6 +53,7 @@ namespace _3DAfines
             {
                 item.Translate(dx, dy, dz);
             }
+            _center.Translate(dx, dy, dz);
         }
         public void Rotate(float ax, float ay, float az)
         {
@@ -52,6 +61,7 @@ namespace _3DAfines
             {
                 item.Rotate(ax, ay, az);
             }
+            _center.Rotate(ax, ay, az);
         }
         public void Scale(float ax, float ay, float az)
         {
@@ -59,10 +69,61 @@ namespace _3DAfines
             {
                 item.Scale(ax, ay, az);
             }
+            _center.Scale(ax, ay, az);
         }
+        public void CenterScale(float ax, float ay, float az)
+        {
+            Point center = Center.Copy();
+            Translate(-Center.X, -Center.Y, -Center.Z);
+            Scale(ax, ay, az);
+            Translate(Center.X +center.X, Center.Y + center.Y, Center.Z + center.Z);
+
+        }
+        public void LineRotate(Point vec, float angle)
+        {
+            foreach (var item in _points)
+            {
+                item.LineRotate(vec,angle);
+            }
+            _center.LineRotate(vec,angle);
+        }
+
+        public void LineRotateModel(Point vec, float angle)
+        {
+            foreach (var item in _points)
+            {
+                item.LineRotate(vec, angle);
+            }
+        }
+
+        public void ReflectionYZ()
+        {
+            foreach (var item in _points)
+            {
+                item.ReflectionYZ();
+            }
+        }
+
+        public void ReflectionZX()
+        {
+            foreach (var item in _points)
+            {
+                item.ReflectionZX();
+            }
+        }
+
+        public void ReflectionXY()
+        {
+            foreach (var item in _points)
+            {
+                item.ReflectionXY();
+            }
+        }
+
         public static Polyhedron Hexahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(size / 2, size / 2, size / 2);
             ans._points.Add(new Point(0, 0, 0));
             ans._points.Add(new Point(0, size, 0));
             ans._points.Add(new Point(size, size, 0));
@@ -89,6 +150,33 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[6], ans._points[2]));
             return ans;
         }
+
+        internal Polyhedron BuildRotateModel(Point point, int divCount)
+        {
+            _center = GetCentralPoint();
+            float degTurn = 360.0f / (float)divCount;
+            float degSumm = degTurn;
+            Polyhedron accPoly = new Polyhedron(new List<Point>(_points), new List<Edge>(_edges));
+            for (int i = 0; i < divCount; ++i)
+            {
+                LineRotate(point, degTurn);
+                for (int k = 0; k < _points.Count; ++k)
+                {
+                    accPoly._points.Add(new Point(_points[k].X, _points[k].Y, _points[k].Z));
+                }
+                
+                for (int j = accPoly._points.Count - _points.Count; j < accPoly._points.Count - 1; ++j)
+                {
+                    accPoly._edges.Add(new Edge(accPoly._points[j], accPoly._points[j + 1]));
+                }
+                accPoly._edges.Add(new Edge(accPoly._points[accPoly._points.Count - _points.Count], accPoly._points[accPoly._points.Count - 1]));
+                degSumm += degTurn;
+            }
+
+            accPoly._center = accPoly.GetCentralPoint();
+            return accPoly;
+        }
+
         public static Polyhedron Tetrahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
@@ -110,6 +198,7 @@ namespace _3DAfines
         public static Polyhedron Octahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(size / 2, size / 2, size / 2);
             ans._points.Add(new Point(size / 2, size / 2, 0));
             ans._points.Add(new Point(0, size / 2, size / 2));
             ans._points.Add(new Point(size / 2, 0, size / 2));
@@ -138,6 +227,7 @@ namespace _3DAfines
         public static Polyhedron Icosahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(0, 0, 0);
             float height = size * 0.5f;
             float degree = 0;
             for (int i = 0; i < 10; i++)
@@ -193,6 +283,7 @@ namespace _3DAfines
         public static Polyhedron Dodecahedron(float size)
         {
             Polyhedron ans = new Polyhedron();
+            ans._center = new Point(0, 0, 0);
             List<Point> points_icosa = new List<Point>();
             double height = size * 0.5;
             double degree = 0;
@@ -251,6 +342,21 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[0], ans._points[2]));
             ans._edges.Add(new Edge(ans._points[0], ans._points[3]));
             return ans;
+        }
+
+        public Point GetCentralPoint()
+        {
+            float xSumm = 0.0f;
+            float ySumm = 0.0f;
+            float ZSumm = 0.0f;
+            foreach (Point point in _points)
+            {
+                xSumm += point.X;
+                ySumm += point.Y;
+                ZSumm += point.Z;
+            }
+
+            return new Point(xSumm / _points.Count, ySumm / _points.Count, ZSumm / _points.Count);
         }
     }
 }

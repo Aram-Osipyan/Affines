@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _3DAfines
+namespace RotatingForm
 {
     class Matrix
     {
@@ -157,6 +157,57 @@ namespace _3DAfines
             affinMatr[2, 1] = (1 - coef) * b;
             affinMatr[2, 2] = 1;
             return new Matrix(affinMatr);
+        }
+        public static Matrix LineRotate(Point vec, float angle)
+        {
+            float l = vec.X;
+            float m = vec.Y;
+            float n = vec.Z;
+            float phi = angle * (float)Math.PI / 180;
+            float cos = (float)Math.Cos(phi);
+            float sin = (float)Math.Sin(phi);
+            return 
+                new float[,] {
+                    { l*l + cos*(1-l*l), l*(1-cos)*m + n*sin,l*(1-cos)*n - m*sin , 0 },
+                    { l*(1-cos)*m - n*sin, m*m + cos*(1-m*m), m*(1-cos)*n + l*sin, 0 },
+                    { l*(1-cos)*n + m*sin, m*(1-cos)*n -l*sin, n*n+ cos*(1-n*n), 0 },
+                    { 0, 0, 0, 1 }
+                };
+        }
+
+        public static Matrix ReflectYZ()
+        {
+            Matrix affinMatr = new float[,]
+            {
+                {-1, 0, 0, 0 },
+                {0, 1, 0, 0 },
+                {0, 0, 1, 0 },
+                {0, 0, 0, 1 },
+            };
+            return affinMatr;
+        }
+        public static Matrix ReflectZX()
+        {
+            Matrix affinMatr = new float[,]
+            {
+                {1, 0, 0, 0 },
+                {0, -1, 0, 0 },
+                {0, 0, 1, 0 },
+                {0, 0, 0, 1 },
+            };
+            return affinMatr;
+        }
+
+        public static Matrix ReflectXY()
+        {
+            Matrix affinMatr = new float[,]
+            {
+                {1, 0, 0, 0 },
+                {0, 1, 0, 0 },
+                {0, 0, -1, 0 },
+                {0, 0, 0,  1},
+            };
+            return affinMatr;
         }
     }
 }

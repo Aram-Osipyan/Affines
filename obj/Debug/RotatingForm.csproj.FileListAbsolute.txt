@@ -1,0 +1,10 @@
+C:\Users\anast\source\repos\RotatingForm\bin\Debug\RotatingForm.exe.config
+C:\Users\anast\source\repos\RotatingForm\bin\Debug\RotatingForm.exe
+C:\Users\anast\source\repos\RotatingForm\bin\Debug\RotatingForm.pdb
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.csprojAssemblyReference.cache
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.Form1.resources
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.Properties.Resources.resources
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.csproj.GenerateResource.cache
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.csproj.CoreCompileInputs.cache
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.exe
+C:\Users\anast\source\repos\RotatingForm\obj\Debug\RotatingForm.pdb

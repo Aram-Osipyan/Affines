@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _3DAfines
+namespace RotatingForm
 {
     class Point
     {
@@ -28,6 +28,11 @@ namespace _3DAfines
             X = 0;
             Y = 0;
             Z = 0;
+        }
+        public Point Normalize()
+        {
+            float distance = (float)Math.Sqrt(X * X + Y * Y+Z*Z);
+            return new Point(X / distance, Y / distance,Z/distance);
         }
         public Matrix GetMatrix()
         {
@@ -62,7 +67,42 @@ namespace _3DAfines
             Y = res[0, 1];
             Z = res[0, 2];
         }
+        public void LineRotate(Point vec,float angle)
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a *
+                Matrix.LineRotate(vec, angle);
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+        }
+        public void ReflectionYZ()
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a * Matrix.ReflectYZ();
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
 
+        }
+
+        public void ReflectionZX()
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a * Matrix.ReflectZX();
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+        }
+
+        public void ReflectionXY()
+        {
+            Matrix a = GetMatrix();
+            Matrix res = a * Matrix.ReflectXY();
+            X = res[0, 0];
+            Y = res[0, 1];
+            Z = res[0, 2];
+        }
         public static Point iso3Dto2D(Point p, int width = 100, int height = 100, float phi = 145, float xi = 45)
         {
 
@@ -85,12 +125,16 @@ namespace _3DAfines
             Matrix c = iso_matr*point;
             return new Point(width / 2 + (int)c[0, 0], height / 2 + (int)c[1, 0],0);
         }
+        public Point Copy()
+        {
+            return new Point(X, Y, Z);
+        }
     }
     class Edge
     {
-        public _3DAfines.Point First { get; set; }
-        public _3DAfines.Point Second { get; set; }
-        public Edge(_3DAfines.Point _first, _3DAfines.Point _second)
+        public RotatingForm.Point First { get; set; }
+        public RotatingForm.Point Second { get; set; }
+        public Edge(RotatingForm.Point _first, RotatingForm.Point _second)
         {
             First = _first;
             Second = _second;
@@ -118,10 +162,10 @@ namespace _3DAfines
 
     class Plane 
     {
-        public _3DAfines.Point First { get; set; }
-        public _3DAfines.Point Second { get; set; }
-        public _3DAfines.Point Third { get; set; }
-        public Plane(_3DAfines.Point first, _3DAfines.Point second, _3DAfines.Point third)
+        public RotatingForm.Point First { get; set; }
+        public RotatingForm.Point Second { get; set; }
+        public RotatingForm.Point Third { get; set; }
+        public Plane(RotatingForm.Point first, RotatingForm.Point second, RotatingForm.Point third)
         {
             First = first;
             Second = second;

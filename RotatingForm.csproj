@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEEEDCC9-0492-43A0-BA81-1D5B94D3C234}</ProjectGuid>
+    <ProjectGuid>{5B5D9596-B52B-41E2-A3D7-EBCE931EDCF8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>_3DAfines</RootNamespace>
-    <AssemblyName>3DAfines</AssemblyName>
+    <RootNamespace>RotatingForm</RootNamespace>
+    <AssemblyName>RotatingForm</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
