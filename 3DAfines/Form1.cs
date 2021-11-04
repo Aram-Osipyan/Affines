@@ -82,8 +82,8 @@ namespace _3DAfines
         {
             _graphics1.Clear(Color.White);
             _graphics2.Clear(Color.White);
-            _polyhedron.DrawParall(_graphics1, Pens.Black);
-            _polyhedron.DrawIso(_graphics2, Pens.Black);
+            _polyhedron.DrawParall(_graphics1, Pens.DarkGreen);
+            _polyhedron.DrawIso(_graphics2, Pens.DarkGreen);
             DrawAxes();
         }
         private void DrawAxes()
@@ -290,6 +290,35 @@ namespace _3DAfines
             {
                 (sender as Label).Text = "Center Rotate";
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            _graphics1.Clear(Color.White);
+            _graphics2.Clear(Color.White);
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            string fname = openFileDialog1.FileName;
+            string ftext = System.IO.File.ReadAllText(fname);
+
+            _polyhedron = Polyhedron.GetFromFile(ftext);
+            
+            _polyhedron.DrawParall(_graphics1, Pens.DarkGreen);
+            _polyhedron.DrawIso(_graphics2, Pens.DarkGreen);
+            DrawAxes();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            string fname = saveFileDialog1.FileName;
+            string text = "";
+            if(_polyhedron != null)
+            {
+                text = _polyhedron.SaveToFile();
+            }
+            System.IO.File.WriteAllText(fname, text);
         }
     }
 }

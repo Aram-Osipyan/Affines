@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
 
 namespace _3DAfines
 {
@@ -9,6 +11,7 @@ namespace _3DAfines
         private List<Point> _points;
         private List<Edge> _edges;
         private Point _center;
+        public Dictionary<int, List<int>> FaceToPoints = new Dictionary<int, List<int>>();
         public Point Center
         {
             get
@@ -125,6 +128,13 @@ namespace _3DAfines
             ans._points.Add(new Point(0, size, size));
             ans._points.Add(new Point(size, size, size));
             ans._points.Add(new Point(size, 0, size));
+
+            //ans.FaceToPoints[1] = new List<int>() { 2, 3, 7, 6 };
+            //ans.FaceToPoints[2] = new List<int>() { 6, 7, 4, 5 };
+            //ans.FaceToPoints[3] = new List<int>() { 5, 4, 0, 1 };
+            //ans.FaceToPoints[4] = new List<int>() { 1, 0, 3, 2 };
+            //ans.FaceToPoints[5] = new List<int>() { 2, 6, 5, 1 };
+            //ans.FaceToPoints[6] = new List<int>() { 3, 7, 4, 0 };
 
             ans._edges.Add(new Edge(ans._points[0], ans._points[1]));
             ans._edges.Add(new Edge(ans._points[1], ans._points[2]));
@@ -323,6 +333,72 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[0], ans._points[2]));
             ans._edges.Add(new Edge(ans._points[0], ans._points[3]));
             return ans;
+        }
+
+        public static Polyhedron GetFromFile(string s)
+        {
+            Polyhedron ans = new Polyhedron();
+            ans._points = new List<Point>();
+            var arr = s.Split('\n');
+            string[] center = arr[0].Split(' ');
+            ans._center = new Point(float.Parse(center[0]), float.Parse(center[1]), float.Parse(center[2]));
+            Dictionary<(float, float, float), int> pointToId = new Dictionary<(float, float, float), int>();
+            for(int i = 1; i < arr.Length; ++i)
+            {
+                string s1 = arr[i];
+                if (string.IsNullOrEmpty(arr[i]))
+                    continue;
+                var arr1 = s1.Split(' ').Where(x => x.Length != 0).ToList();
+                List<Point> curPoints = new List<Point>();
+                ans.FaceToPoints[i] = new List<int>();
+                for(int j = 0; j < arr1.Count; j +=3)
+                {
+                    float x = (float)Math.Truncate(float.Parse(arr1[j], CultureInfo.InvariantCulture));
+                    float y = (float)Math.Truncate(float.Parse(arr1[j + 1], CultureInfo.InvariantCulture));
+                    float z = (float)Math.Truncate(float.Parse(arr1[j + 2], CultureInfo.InvariantCulture));
+                    var coordinate = (x, y, z);
+                    
+                    if(!pointToId.ContainsKey(coordinate))
+                    {
+                        Point p = new Point(x, y, z);
+                        ans._points.Add(p);
+                        pointToId[coordinate] = ans._points.Count - 1;
+                        curPoints.Add(p);
+                        ans.FaceToPoints[i].Add(ans._points.Count - 1);
+                    }
+                    else
+                    {
+                        int pointId = pointToId[coordinate];
+                        curPoints.Add(ans._points[pointId]);
+                        ans.FaceToPoints[i].Add(pointId);
+                    }
+
+                }
+                for(int j = 0; j < curPoints.Count - 1; j++)
+                {
+                    ans._edges.Add(new Edge(curPoints[j], curPoints[j + 1]));
+                }
+                ans._edges.Add(new Edge(curPoints[0], curPoints[curPoints.Count - 1]));
+            }
+            return ans;
+        }
+
+        public string SaveToFile()
+        {
+            string res = _center.X + " " + _center.Y + " " + _center.Z + "\n";
+            foreach(var face_point in FaceToPoints)
+            {
+                List<int> pointsIds = face_point.Value;
+                for(int  i = 0; i < pointsIds.Count; ++i)
+                {
+                    Point curPoint = _points[pointsIds[i]];
+                    res += Math.Truncate(curPoint.X).ToString() + " ";
+                    res += Math.Truncate(curPoint.Y).ToString() + " ";
+                    res += Math.Truncate(curPoint.Z).ToString() + " ";
+                }
+                res += '\n';
+            }
+            return res;
         }
     }
 }
