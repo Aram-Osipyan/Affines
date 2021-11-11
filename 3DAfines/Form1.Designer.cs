@@ -57,6 +57,24 @@ namespace _3DAfines
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.vScrollBar10 = new System.Windows.Forms.VScrollBar();
+            this.label13 = new System.Windows.Forms.Label();
+            this.vScrollBar11 = new System.Windows.Forms.VScrollBar();
+            this.vScrollBar12 = new System.Windows.Forms.VScrollBar();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +86,6 @@ namespace _3DAfines
             this.pictureBox1.Size = new System.Drawing.Size(383, 349);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // pictureBox2
             // 
@@ -318,11 +335,200 @@ namespace _3DAfines
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // vScrollBar10
+            // 
+            this.vScrollBar10.Location = new System.Drawing.Point(416, 238);
+            this.vScrollBar10.Maximum = 500;
+            this.vScrollBar10.Name = "vScrollBar10";
+            this.vScrollBar10.Size = new System.Drawing.Size(21, 123);
+            this.vScrollBar10.TabIndex = 33;
+            this.vScrollBar10.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar10_Scroll);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(413, 209);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(92, 17);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "RotateCentre";
+            // 
+            // vScrollBar11
+            // 
+            this.vScrollBar11.Location = new System.Drawing.Point(451, 238);
+            this.vScrollBar11.Maximum = 500;
+            this.vScrollBar11.Name = "vScrollBar11";
+            this.vScrollBar11.Size = new System.Drawing.Size(21, 123);
+            this.vScrollBar11.TabIndex = 35;
+            this.vScrollBar11.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar11_Scroll);
+            // 
+            // vScrollBar12
+            // 
+            this.vScrollBar12.Location = new System.Drawing.Point(484, 238);
+            this.vScrollBar12.Maximum = 500;
+            this.vScrollBar12.Name = "vScrollBar12";
+            this.vScrollBar12.Size = new System.Drawing.Size(21, 123);
+            this.vScrollBar12.TabIndex = 36;
+            this.vScrollBar12.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar12_Scroll);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(415, 367);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 17);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "dx";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(448, 367);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 17);
+            this.label15.TabIndex = 38;
+            this.label15.Text = "dy";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(482, 367);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(23, 17);
+            this.label16.TabIndex = 39;
+            this.label16.Text = "dz";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(538, 209);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 17);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "RotateLine";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(694, 209);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(87, 17);
+            this.label21.TabIndex = 50;
+            this.label21.Text = "Line Params";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(861, 512);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(112, 35);
+            this.button6.TabIndex = 55;
+            this.button6.Text = "Dodecahedron";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(861, 471);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(112, 35);
+            this.button7.TabIndex = 54;
+            this.button7.Text = "Icosahedron";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(861, 430);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(112, 35);
+            this.button8.TabIndex = 53;
+            this.button8.Text = "Octahedron";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(861, 389);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(112, 35);
+            this.button9.TabIndex = 52;
+            this.button9.Text = "Hexahedron";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(861, 348);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(112, 35);
+            this.button10.TabIndex = 51;
+            this.button10.Text = "Tetrahedron";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(864, 304);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(109, 17);
+            this.label18.TabIndex = 56;
+            this.label18.Text = "Add Polyhedron";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(554, 316);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(112, 35);
+            this.button11.TabIndex = 57;
+            this.button11.Text = "Modify First";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(685, 316);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(112, 35);
+            this.button12.TabIndex = 58;
+            this.button12.Text = "Modify Second";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(639, 403);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 21);
+            this.checkBox1.TabIndex = 59;
+            this.checkBox1.Text = "ZBuffer ON";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1379, 748);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.vScrollBar12);
+            this.Controls.Add(this.vScrollBar11);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.vScrollBar10);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -353,6 +559,7 @@ namespace _3DAfines
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -390,6 +597,24 @@ namespace _3DAfines
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.VScrollBar vScrollBar10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.VScrollBar vScrollBar11;
+        private System.Windows.Forms.VScrollBar vScrollBar12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

@@ -4,10 +4,12 @@ using System.Drawing;
 
 namespace _3DAfines
 {
-    class Polyhedron
+    public class Polyhedron
     {
-        private List<Point> _points;
-        private List<Edge> _edges;
+        public List<Point> _points;
+        public List<Edge> _edges;
+        public List<List<int>> faces = new List<List<int>>();
+
         public List<Edge> Edges
         {
             get
@@ -87,6 +89,13 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[4], ans._points[0]));
             ans._edges.Add(new Edge(ans._points[5], ans._points[1]));
             ans._edges.Add(new Edge(ans._points[6], ans._points[2]));
+
+            ans.faces.Add(new List<int> { 0, 1, 3, 2 });
+            ans.faces.Add(new List<int> { 1, 5, 7, 3 });
+            ans.faces.Add(new List<int> { 5, 4, 6, 7 });
+            ans.faces.Add(new List<int> { 4, 5, 1, 0 });
+            ans.faces.Add(new List<int> { 2, 6, 4, 0 });
+            ans.faces.Add(new List<int> { 2, 3, 7, 6 });
             return ans;
         }
         public static Polyhedron Tetrahedron(float size)
@@ -103,6 +112,11 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[1], ans._points[2]));
             ans._edges.Add(new Edge(ans._points[1], ans._points[3]));
             ans._edges.Add(new Edge(ans._points[3], ans._points[2]));
+
+            ans.faces.Add(new List<int> { 0, 1, 2 });
+            ans.faces.Add(new List<int> { 0, 2, 3 });
+            ans.faces.Add(new List<int> { 0, 3, 1 });
+            ans.faces.Add(new List<int> { 1, 3, 2 });
 
             return ans;
         }
@@ -132,6 +146,15 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[2], ans._points[3]));
             ans._edges.Add(new Edge(ans._points[3], ans._points[4]));
             ans._edges.Add(new Edge(ans._points[4], ans._points[1]));
+
+            ans.faces.Add(new List<int> { 0, 1, 2 });
+            ans.faces.Add(new List<int> { 0, 2, 3 });
+            ans.faces.Add(new List<int> { 2, 5, 3 });
+            ans.faces.Add(new List<int> { 1, 5, 2 });
+            ans.faces.Add(new List<int> { 1, 0, 4 });
+            ans.faces.Add(new List<int> { 0, 3, 4 });
+            ans.faces.Add(new List<int> { 4, 3, 5 });
+            ans.faces.Add(new List<int> { 1, 4, 5 });
 
             return ans;
         }
@@ -252,5 +275,49 @@ namespace _3DAfines
             ans._edges.Add(new Edge(ans._points[0], ans._points[3]));
             return ans;
         }
+
+        public Point GetCentralPoint()
+        {
+            float xSumm = 0.0f;
+            float ySumm = 0.0f;
+            float ZSumm = 0.0f;
+            foreach (Point point in _points)
+            {
+                xSumm += point.X;
+                ySumm += point.Y;
+                ZSumm += point.Z;
+            }
+
+            return new Point(xSumm / _points.Count, ySumm / _points.Count, ZSumm / _points.Count);
+        }
+
+       /*public Point FaceToNormal(List<int> faces)
+        {
+            Point firstPoint = _points[faces[0]];
+            Point secondPoint = _points[faces[1]];
+            Point thirdPoint = _points[faces[2]];
+
+            var vec1 = secondPoint - firstPoint;
+            var vec2 = firstPoint - thirdPoint;
+
+            return new Point(vec1.Y * vec2.Z - vec1.Z * vec2.Y,
+                        vec1.Z * vec2.X - vec1.X * vec2.Z,
+                        vec1.X * vec2.Y - vec1.Y * vec2.X);
+        }
+
+        public List<List<int>> GetFrontFaces(Point sightPoint)
+        {
+            var frontFaces = new List<List<int>>();
+
+            foreach (var face in faces)
+            {
+                if (angleIsObtuse(FaceToNormal(face), sightPoint))
+                {
+                    frontFaces.Add(face);
+                } 
+            }
+                
+            return frontFaces;
+        }*/
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _3DAfines
 {
-    class Matrix
+    public class Matrix
     {
         private readonly float[,] _data;
         public int N

@@ -1,0 +1,10 @@
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\bin\Debug\3DAfines.exe.config
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\bin\Debug\3DAfines.exe
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\bin\Debug\3DAfines.pdb
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\3DAfines.csprojAssemblyReference.cache
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\_3DAfines.Form1.resources
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\_3DAfines.Properties.Resources.resources
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\3DAfines.csproj.GenerateResource.cache
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\3DAfines.csproj.CoreCompileInputs.cache
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\3DAfines.exe
+C:\Users\anast\Downloads\Affines-main\Affines-main\3DAfines\obj\Debug\3DAfines.pdb
