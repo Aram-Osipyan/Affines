@@ -90,7 +90,7 @@ namespace _3DAfines
             // 
             this.pictureBox2.Location = new System.Drawing.Point(12, 367);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(383, 369);
+            this.pictureBox2.Size = new System.Drawing.Size(657, 466);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -477,7 +477,7 @@ namespace _3DAfines
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 748);
+            this.ClientSize = new System.Drawing.Size(1379, 845);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.hScrollBar1);

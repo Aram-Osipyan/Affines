@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _3DAfines
 {
-    class Point
+    public class Point
     {
         public float X { set; get; }
         public float Y { set; get; }
@@ -130,46 +130,6 @@ namespace _3DAfines
             return new Point(X, Y, Z);
         }
     }
-    class Edge
-    {
-        public _3DAfines.Point First { get; set; }
-        public _3DAfines.Point Second { get; set; }
-        public Edge(_3DAfines.Point _first, _3DAfines.Point _second)
-        {
-            First = _first;
-            Second = _second;
-        }
-        public void DrawParall(Graphics graphics,Pen pen, int offset = 100)
-        {
-            graphics.DrawLine(pen, 
-                First.X + offset, 
-                First.Y + offset, 
-                Second.X + offset, 
-                Second.Y + offset);
-        }
-
-        public void DrawIso(Graphics graphics, Pen pen,int offset = 100)
-        {
-            Point point1 = Point.iso3Dto2D(First);
-            Point point2 = Point.iso3Dto2D(Second);
-            graphics.DrawLine(pen, 
-                point1.X + offset, 
-                point1.Y + offset, 
-                point2.X + offset, 
-                point2.Y + offset);
-        }
-    }
-
-    class Plane 
-    {
-        public _3DAfines.Point First { get; set; }
-        public _3DAfines.Point Second { get; set; }
-        public _3DAfines.Point Third { get; set; }
-        public Plane(_3DAfines.Point first, _3DAfines.Point second, _3DAfines.Point third)
-        {
-            First = first;
-            Second = second;
-            Third = third;
-        }
-    }
+  
+    
 }

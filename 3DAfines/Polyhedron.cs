@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace _3DAfines
 {
-    class Polyhedron
+    public class Polyhedron
     {
         private List<Point> _points;
         private List<Edge> _edges;
@@ -15,12 +15,23 @@ namespace _3DAfines
             {
                 return _center;
             }
+            protected set
+            {
+                _center = value;
+            }
         }
         public List<Edge> Edges
         {
             get
             {
                 return _edges;
+            }
+        }
+        public List<Point> Points
+        {
+            get
+            {
+                return _points;
             }
         }
         public Polyhedron(List<Point> points, List<Edge> edges)
@@ -85,7 +96,7 @@ namespace _3DAfines
             {
                 item.LineRotate(vec,angle);
             }
-            _center.LineRotate(vec,angle);
+            _center?.LineRotate(vec,angle);
         }
 
         public void ReflectionYZ()

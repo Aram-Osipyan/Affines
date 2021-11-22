@@ -1,0 +1,79 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\osipy\\source\\repos\\3DAfines\\2VarPlotting\\2VarPlotting.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\osipy\\source\\repos\\3DAfines\\2VarPlotting\\2VarPlotting.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\osipy\\source\\repos\\3DAfines\\2VarPlotting\\2VarPlotting.csproj",
+        "projectName": "2VarPlotting",
+        "projectPath": "C:\\Users\\osipy\\source\\repos\\3DAfines\\2VarPlotting\\2VarPlotting.csproj",
+        "packagesPath": "C:\\Users\\osipy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\osipy\\source\\repos\\3DAfines\\2VarPlotting\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\osipy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\osipy\\source\\repos\\3DAfines\\3DAfines\\3DAfines.csproj": {
+                "projectPath": "C:\\Users\\osipy\\source\\repos\\3DAfines\\3DAfines\\3DAfines.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\osipy\\source\\repos\\3DAfines\\3DAfines\\3DAfines.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\osipy\\source\\repos\\3DAfines\\3DAfines\\3DAfines.csproj",
+        "projectName": "3DAfines",
+        "projectPath": "C:\\Users\\osipy\\source\\repos\\3DAfines\\3DAfines\\3DAfines.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

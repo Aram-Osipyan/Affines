@@ -119,7 +119,7 @@ namespace _3DAfines
         }
         private void DXRotate_Scroll(object sender, ScrollEventArgs e)
         {
-            if (_scale_mode)
+            if (_rotate_mode)
             {
                 _polyhedron.Rotate(e.NewValue - e.OldValue, 0, 0);
             }
@@ -135,7 +135,7 @@ namespace _3DAfines
 
         private void DYRotate_Scroll(object sender, ScrollEventArgs e)
         {
-            if (_scale_mode)
+            if (_rotate_mode)
             {
                 _polyhedron.Rotate(0, e.NewValue - e.OldValue, 0);
             }
@@ -151,7 +151,7 @@ namespace _3DAfines
         }
         private void DZRotate_Scroll(object sender, ScrollEventArgs e)
         {
-            if (_scale_mode)
+            if (_rotate_mode)
             {
                 _polyhedron.Rotate(0, 0, e.NewValue - e.OldValue);
             }
@@ -241,7 +241,7 @@ namespace _3DAfines
             UpdateScene();
         }
 
-        private bool _scale_mode = false;
+        private bool _scale_mode = true;
         private void label9_Click(object sender, EventArgs e)
         {
             _scale_mode = !_scale_mode;
@@ -278,11 +278,11 @@ namespace _3DAfines
             _polyhedron.ReflectionXY();
             UpdateScene();
         }
-        private bool _rotate_mode = false;
+        private bool _rotate_mode = true;
         private void label5_Click(object sender, EventArgs e)
         {
-            _scale_mode = !_scale_mode;
-            if (_scale_mode)
+            _rotate_mode = !_rotate_mode;
+            if (_rotate_mode)
             {
                 (sender as Label).Text = "Rotate";
             }
